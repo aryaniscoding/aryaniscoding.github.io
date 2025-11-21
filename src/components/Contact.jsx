@@ -23,17 +23,16 @@ const Contact = () => {
     setIsLoading(true)
     setStatus({ type: '', message: '' })
 
-    // Replace with your EmailJS credentials
     const serviceID = 'service_bqx7j4p'
     const templateID = 'template_xkoycgb'
-    const publicKey = 'HHfvzYcf4ZNrovvKDY'
+    const publicKey = 'HHfvzYcf4ZNrovvKD'
 
+    // ✅ Match your EmailJS template variables exactly
     const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      subject: formData.subject,
-      message: formData.message,
-      to_email: 'aryansahu2705@gmail.com', // Your email
+      name: formData.name,           // matches {{name}}
+      from_email: formData.email,    // matches {{from_email}}
+      subject: formData.subject,     // matches {{subject}}
+      message: formData.message,     // matches {{message}}
     }
 
     emailjs
