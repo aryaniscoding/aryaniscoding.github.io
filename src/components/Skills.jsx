@@ -9,52 +9,57 @@ import {
 import {
   SiCplusplus,
   SiMysql,
-  SiFlask,
   SiFastapi,
   SiTensorflow,
   SiPandas,
   SiScikitlearn,
-  SiPostgresql,
-  SiJavascript,
-  SiTailwindcss,
+  SiGooglecloud,
+  SiNumpy,
+  SiPlotly,
 } from 'react-icons/si'
+import { TbMathFunction } from 'react-icons/tb'
 import './Skills.css'
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: 'Programming Languages',
-      skills: [
-        { name: 'Python', icon: <FaPython />, level: 95 },
-        { name: 'C / C++', icon: <SiCplusplus />, level: 85 },
-        { name: 'JavaScript', icon: <SiJavascript />, level: 80 },
-      ],
-    },
-    {
-      title: 'Backend & APIs',
-      skills: [
-        { name: 'FastAPI', icon: <SiFastapi />, level: 90 },
-        { name: 'Flask', icon: <SiFlask />, level: 85 },
-        { name: 'PostgreSQL', icon: <SiPostgresql />, level: 85 },
-      ],
-    },
-    {
-      title: 'AI/ML & Data',
-      skills: [
-        { name: 'Pandas', icon: <SiPandas />, level: 90 },
-        { name: 'TensorFlow', icon: <SiTensorflow />, level: 80 },
-        { name: 'Scikit-learn', icon: <SiScikitlearn />, level: 85 },
-      ],
-    },
-    {
-      title: 'Tools & Technologies',
-      skills: [
-        { name: 'Docker', icon: <FaDocker />, level: 80 },
-        { name: 'Git', icon: <FaGitAlt />, level: 90 },
-        { name: 'Tailwind CSS', icon: <SiTailwindcss />, level: 85 },
-      ],
-    },
+  const allSkills = [
+    { name: 'Python', icon: <FaPython />, color: '#3776AB' },
+    { name: 'C / C++', icon: <SiCplusplus />, color: '#00599C' },
+    { name: 'FastAPI', icon: <SiFastapi />, color: '#009688' },
+    { name: 'PostgreSQL', icon: <FaDatabase />, color: '#336791' },
+    { name: 'MySQL', icon: <SiMysql />, color: '#4479A1' },
+    { name: 'pgvector', icon: <FaDatabase />, color: '#336791' },
+    { name: 'FAISS', icon: <TbMathFunction />, color: '#00A8E8' },
+    { name: 'Docker', icon: <FaDocker />, color: '#2496ED' },
+    { name: 'Git', icon: <FaGitAlt />, color: '#F05032' },
+    { name: 'GCP', icon: <SiGooglecloud />, color: '#4285F4' },
+    { name: 'Scikit-learn', icon: <SiScikitlearn />, color: '#F7931E' },
+    { name: 'TensorFlow', icon: <SiTensorflow />, color: '#FF6F00' },
+    { name: 'Pandas', icon: <SiPandas />, color: '#150458' },
+    { name: 'NumPy', icon: <SiNumpy />, color: '#013243' },
+    { name: 'Seaborn', icon: <SiPlotly />, color: '#3776AB' },
+    { name: 'Matplotlib', icon: <SiPlotly />, color: '#11557C' },
   ]
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  }
 
   return (
     <section className="skills" id="skills">
@@ -68,46 +73,32 @@ const Skills = () => {
         Skills & Technologies
       </motion.h2>
 
-      <div className="skills-container">
-        {skillCategories.map((category, catIndex) => (
+      <motion.div
+        className="skills-grid-horizontal"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        {allSkills.map((skill, index) => (
           <motion.div
-            key={catIndex}
-            className="skill-category"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: catIndex * 0.1 }}
+            key={index}
+            className="skill-card-horizontal"
+            variants={itemVariants}
+            whileHover={{
+              scale: 1.15,
+              y: -10,
+              rotate: [0, -5, 5, 0],
+              transition: { duration: 0.3 },
+            }}
+            whileTap={{ scale: 0.95 }}
+            style={{ '--skill-color': skill.color }}
           >
-            <h3 className="category-title">{category.title}</h3>
-            <div className="skills-list">
-              {category.skills.map((skill, skillIndex) => (
-                <motion.div
-                  key={skillIndex}
-                  className="skill-item"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <div className="skill-header">
-                    <div className="skill-info">
-                      <span className="skill-icon">{skill.icon}</span>
-                      <span className="skill-name">{skill.name}</span>
-                    </div>
-                    <span className="skill-percentage">{skill.level}%</span>
-                  </div>
-                  <div className="skill-bar">
-                    <motion.div
-                      className="skill-progress"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: skillIndex * 0.1 }}
-                    />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <div className="skill-icon-horizontal">{skill.icon}</div>
+            <span className="skill-name-horizontal">{skill.name}</span>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   )
 }
