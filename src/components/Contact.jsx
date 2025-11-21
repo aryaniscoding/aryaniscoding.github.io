@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa'
-import emailjs from '@emailjs/browser'
 import './Contact.css'
 
 const Contact = () => {
@@ -14,48 +13,41 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [status, setStatus] = useState({ type: '', message: '' })
 
+  // ✅ ADD THIS - You were missing this function
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
     setStatus({ type: '', message: '' })
 
-    const serviceID = 'service_bqx7j4p'
-    const templateID = 'template_xkoycgb'
-    const publicKey = 'HHfvzYcf4ZNrovvKD'
+    const formDataWeb3 = new FormData()
+    formDataWeb3.append('access_key', '468d201d-4aec-4300-8d8c-655a39d390bd') // Replace with your actual key
+    formDataWeb3.append('name', formData.name)
+    formDataWeb3.append('email', formData.email)
+    formDataWeb3.append('subject', formData.subject)
+    formDataWeb3.append('message', formData.message)
 
-    // ✅ Match your EmailJS template variables exactly
-    const templateParams = {
-      name: formData.name,           // matches {{name}}
-      from_email: formData.email,    // matches {{from_email}}
-      subject: formData.subject,     // matches {{subject}}
-      message: formData.message,     // matches {{message}}
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataWeb3,
+      })
+      const data = await response.json()
+      
+      if (data.success) {
+        setStatus({ type: 'success', message: 'Message sent successfully! I will get back to you soon.' })
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setStatus({ type: 'error', message: 'Failed to send message. Please try again.' })
+      }
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Failed to send. Please try again.' })
+    } finally {
+      setIsLoading(false)
     }
-
-    emailjs
-      .send(serviceID, templateID, templateParams, publicKey)
-      .then(
-        (response) => {
-          console.log('SUCCESS!', response.status, response.text)
-          setStatus({
-            type: 'success',
-            message: 'Message sent successfully! I will get back to you soon.',
-          })
-          setFormData({ name: '', email: '', subject: '', message: '' })
-          setIsLoading(false)
-        },
-        (error) => {
-          console.error('FAILED...', error)
-          setStatus({
-            type: 'error',
-            message: 'Failed to send message. Please try again or email me directly.',
-          })
-          setIsLoading(false)
-        }
-      )
   }
 
   const contactInfo = [
