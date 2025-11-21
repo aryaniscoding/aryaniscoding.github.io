@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
 import './Contact.css'
 
 const Contact = () => {
@@ -10,6 +11,8 @@ const Contact = () => {
     subject: '',
     message: '',
   })
+  const [isLoading, setIsLoading] = useState(false)
+  const [status, setStatus] = useState({ type: '', message: '' })
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -17,9 +20,43 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    alert('Message sent successfully!')
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    setIsLoading(true)
+    setStatus({ type: '', message: '' })
+
+    // Replace with your EmailJS credentials
+    const serviceID = 'service_bqx7j4p'
+    const templateID = 'template_xkoycgb'
+    const publicKey = 'HHfvzYcf4ZNrovvKDY'
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      to_email: 'aryansahu2705@gmail.com', // Your email
+    }
+
+    emailjs
+      .send(serviceID, templateID, templateParams, publicKey)
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text)
+          setStatus({
+            type: 'success',
+            message: 'Message sent successfully! I will get back to you soon.',
+          })
+          setFormData({ name: '', email: '', subject: '', message: '' })
+          setIsLoading(false)
+        },
+        (error) => {
+          console.error('FAILED...', error)
+          setStatus({
+            type: 'error',
+            message: 'Failed to send message. Please try again or email me directly.',
+          })
+          setIsLoading(false)
+        }
+      )
   }
 
   const contactInfo = [
@@ -90,6 +127,12 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
+          {status.message && (
+            <div className={`status-message ${status.type}`}>
+              {status.message}
+            </div>
+          )}
+
           <div className="form-group">
             <input
               type="text"
@@ -99,6 +142,7 @@ const Contact = () => {
               onChange={handleChange}
               required
               className="form-input"
+              disabled={isLoading}
             />
           </div>
 
@@ -111,6 +155,7 @@ const Contact = () => {
               onChange={handleChange}
               required
               className="form-input"
+              disabled={isLoading}
             />
           </div>
 
@@ -123,6 +168,7 @@ const Contact = () => {
               onChange={handleChange}
               required
               className="form-input"
+              disabled={isLoading}
             />
           </div>
 
@@ -135,6 +181,7 @@ const Contact = () => {
               required
               rows="6"
               className="form-input"
+              disabled={isLoading}
             />
           </div>
 
@@ -143,8 +190,9 @@ const Contact = () => {
             className="submit-button"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            disabled={isLoading}
           >
-            Send Message <FaPaperPlane />
+            {isLoading ? 'Sending...' : 'Send Message'} <FaPaperPlane />
           </motion.button>
         </motion.form>
       </div>
