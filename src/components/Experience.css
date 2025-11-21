@@ -1,0 +1,124 @@
+.experience-timeline {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, #00d4ff 0%, #7a00ff 50%, #ff00d4 100%);
+}
+
+.experience-item {
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.experience-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.experience-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+}
+
+.experience-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.experience-icon {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.experience-position {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+}
+
+.experience-company {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin: 0;
+}
+
+.experience-meta {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.experience-duration,
+.experience-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #b0b0b0;
+}
+
+.experience-description {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-description li {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #d0d0d0;
+  margin-bottom: 10px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.experience-description li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .experience-timeline::before {
+    left: 0;
+  }
+
+  .experience-card {
+    padding: 20px;
+  }
+
+  .experience-position {
+    font-size: 1.2rem;
+  }
+
+  .experience-company {
+    font-size: 1rem;
+  }
+
+  .experience-icon {
+    font-size: 2rem;
+  }
+}
