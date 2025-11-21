@@ -61,7 +61,7 @@ const Contact = () => {
       icon: <FaMapMarkerAlt />,
       title: 'Location',
       value: 'Pune, Maharashtra, India'
-    },
+    }
   ]
 
   return (
