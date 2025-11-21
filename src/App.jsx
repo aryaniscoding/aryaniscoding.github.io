@@ -35,6 +35,14 @@ function App() {
     <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
       <div className="app">
         <Navbar />
+        
+        {/* Snow Effect Container - Only visible in Dark Mode */}
+        <div className="snow-container">
+          {[...Array(20)].map((_, index) => (
+            <div key={index} className="snowflake">❄</div>
+          ))}
+        </div>
+
         <Hero />
         <About />
         <Experience />
