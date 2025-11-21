@@ -12,7 +12,7 @@ const Projects = () => {
         'Built a Hybrid RAG QA assistant with LlamaIndex routing and Text-to-SQL capabilities on DuckDB. Delivered FastAPI + Uvicorn backend with SQLAlchemy, exposing /api/chat, /api/health, and /api/history endpoints.',
       tech: ['Python', 'FastAPI', 'LlamaIndex', 'HuggingFace', 'DuckDB', 'SQLAlchemy'],
       image: '/images/projects/project1.jpg',
-      github: 'https://github.com/aryaniscoding/aquamitra',
+      github: 'https://github.com/aryaniscoding/SIH_2025_sql_coder/tree/frontend',
     },
     {
       title: 'FareFlow: Smart Parking System',
@@ -21,7 +21,7 @@ const Projects = () => {
         'Built an end-to-end parking solution with ESP32-CAM video feed and Flask backend. Achieved 98% accuracy in license plate recognition using Plate Recognizer API. Developed dynamic fare logic based on parking duration.',
       tech: ['Python', 'Flask', 'ESP32-CAM', 'Plate Recognizer API', 'SQLite', 'OpenCV'],
       image: '/images/projects/project2.jpg',
-      github: 'https://github.com/aryaniscoding/fareflow',
+      github: 'https://github.com/aryaniscoding/FareFlow',
     },
     {
       title: 'The Gladiators: Fantasy Cricket Selector',
@@ -30,7 +30,7 @@ const Projects = () => {
         'Built an automated fantasy-cricket selection engine using scikit-learn Pipelines with RandomForestRegressor tuned via RandomizedSearchCV. Containerized workflow with Docker for reproducible data pipeline.',
       tech: ['Python', 'pandas', 'scikit-learn', 'Docker', 'numpy'],
       image: '/images/projects/project3.jpg',
-      github: 'https://github.com/aryaniscoding/gladiators',
+      github: 'https://github.com/aryaniscoding/The_Gladiators_gameathon',
     },
   ]
 

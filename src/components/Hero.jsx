@@ -7,8 +7,8 @@ import './Hero.css'
 const Hero = () => {
   const socialLinks = [
     { icon: <FaGithub />, url: 'https://github.com/aryaniscoding', label: 'GitHub' },
-    { icon: <FaLinkedin />, url: 'https://linkedin.com/in/Aryan-Sahu', label: 'LinkedIn' },
-    { icon: <SiLeetcode />, url: '#', label: 'LeetCode' },
+    { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/aryan-sahu-131928277/', label: 'LinkedIn' },
+    { icon: <SiLeetcode />, url: 'https://leetcode.com/u/aryan_sahu27/', label: 'LeetCode' },
     { icon: <FaEnvelope />, url: 'mailto:aryansahu2705@gmail.com', label: 'Email' },
   ]
 
@@ -36,7 +36,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            Aryan Hemant Sahu
+            Aryan Sahu
           </motion.h1>
 
           <motion.h2
@@ -45,7 +45,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            Full Stack Developer & AI/ML Engineer
+            GenAi Developer & ML Engineer
           </motion.h2>
 
           <motion.p
@@ -55,7 +55,7 @@ const Hero = () => {
             transition={{ delay: 0.8 }}
           >
             Electronics & Telecommunications student at PICT with expertise in building
-            advanced RAG systems, full-stack applications, and embedded control systems.
+            advanced GenAi systems ,Ml/Dl models and embedded systems.
           </motion.p>
 
           <motion.div
@@ -116,10 +116,10 @@ const Hero = () => {
             <img src="/images/profile.jpg" alt="Aryan Sahu" />
           </div>
           <div className="floating-elements">
-            <div className="float-item">Python</div>
-            <div className="float-item">FastAPI</div>
-            <div className="float-item">PostgreSQL</div>
-            <div className="float-item">LlamaIndex</div>
+            <div className="float-item">PYTHON</div>
+            <div className="float-item">DSA</div>
+            <div className="float-item">OOP</div>
+            <div className="float-item">DBMS</div>
           </div>
         </motion.div>
       </div>

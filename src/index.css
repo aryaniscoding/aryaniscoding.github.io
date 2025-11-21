@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -8,10 +8,29 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: #0a0a0a;
-  color: #ffffff;
+  font-family: 'Rajdhani', 'Orbitron', sans-serif;
+  background: #ffffff;
+  color: #0f172a;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-weight: 500;
+}
+
+body.dark-mode {
+  background: #000000;
+  color: #f1f5f9;
+}
+
+/* Headings use Orbitron for extra futuristic feel */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Body text uses Rajdhani for better readability */
+p, span, a, button, input, textarea {
+  font-family: 'Rajdhani', sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -19,14 +38,26 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #e2e8f0;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00d4ff;
+  background: #2563eb;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00a8cc;
+  background: #1d4ed8;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #334155;
 }
