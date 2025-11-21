@@ -60,8 +60,7 @@ const Contact = () => {
     {
       icon: <FaMapMarkerAlt />,
       title: 'Location',
-      value: 'Pune, Maharashtra, India',
-      link: '#',
+      value: 'Pune, Maharashtra, India'
     },
   ]
 
