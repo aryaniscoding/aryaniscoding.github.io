@@ -31,14 +31,14 @@ const About = () => {
           transition={{ duration: 0.8 }}
         >
           <p>
-            I'm a passionate <strong>Full Stack Developer and AI/ML Engineer</strong> currently
+            I'm a passionate <strong>GenAi Developer and AI/ML Engineer</strong> currently
             pursuing my Bachelor's in Electronics & Telecommunications with AIML Honours at
             <strong> Pune Institute of Computer Technology (PICT)</strong>.
           </p>
 
           <p>
             With a <strong>CGPA of 9.68/10</strong>, I specialize in building advanced
-            <strong> RAG (Retrieval-Augmented Generation) systems</strong>, full-stack web
+            <strong> Dl models</strong>, backend
             applications, and embedded control systems. My expertise spans across Python, C/C++,
             FastAPI, and modern AI/ML technologies.
           </p>
