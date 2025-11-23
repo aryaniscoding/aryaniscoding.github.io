@@ -95,7 +95,7 @@ const Hero = () => {
               Get In Touch
             </motion.a>
             <motion.a
-              href="/resume.pdf"
+              href="/aryan_sahu_resume.pdf"
               download
               className="cta-button secondary"
               whileHover={{ scale: 1.05 }}

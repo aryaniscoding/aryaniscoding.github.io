@@ -77,7 +77,7 @@ body.dark-mode .app::after {
   }
 }
 
-/* ========== DARK MODE - FASTER SNOW EFFECT ========== */
+/* ========== DARK MODE - SNOW FALLING STRAIGHT DOWN ========== */
 .snow-container {
   position: fixed;
   top: 0;
@@ -101,22 +101,32 @@ body.dark-mode .snow-container {
   font-size: 1em;
   font-family: Arial, sans-serif;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
-  animation: snowfall linear infinite;
+  animation: snowfall-straight linear infinite;
   user-select: none;
 }
 
-@keyframes snowfall {
+/* Fixed animation - falling straight down with gentle sway */
+@keyframes snowfall-straight {
   0% {
     transform: translateY(0) translateX(0) rotate(0deg);
     opacity: 1;
   }
+  25% {
+    transform: translateY(25vh) translateX(10px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(50vh) translateX(-10px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(75vh) translateX(10px) rotate(270deg);
+  }
   100% {
-    transform: translateY(100vh) translateX(100px) rotate(360deg);
+    transform: translateY(100vh) translateX(0) rotate(360deg);
     opacity: 0.4;
   }
 }
 
-/* Faster snowflake speeds (reduced durations) */
+/* Faster snowflake speeds - straight down */
 .snowflake:nth-child(1) { left: 10%; animation-duration: 5s; animation-delay: 0s; font-size: 0.8em; }
 .snowflake:nth-child(2) { left: 20%; animation-duration: 6s; animation-delay: 1s; font-size: 1.2em; }
 .snowflake:nth-child(3) { left: 30%; animation-duration: 7s; animation-delay: 2s; font-size: 0.9em; }
