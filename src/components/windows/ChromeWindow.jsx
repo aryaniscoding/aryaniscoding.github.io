@@ -19,7 +19,7 @@ export default function ChromeWindow() {
                     padding: "3px 10px",
                     fontSize: 11,
                     color: "#666",
-                    fontFamily: "'Silkscreen', monospace",
+                    fontFamily: "var(--ui-font)",
                 }}>
                     google.com
                 </div>

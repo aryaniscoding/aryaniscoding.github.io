@@ -82,19 +82,19 @@ export default function PaintWindow() {
                 <button onClick={() => setTool("brush")} style={{
                     ...tbtn, background: tool === "brush" ? "#d0e4f8" : "none",
                     border: tool === "brush" ? "1px solid #80b0d8" : "1px solid transparent",
-                }}>✏️ Brush</button>
+                }}>Brush</button>
                 <button onClick={() => setTool("eraser")} style={{
                     ...tbtn, background: tool === "eraser" ? "#d0e4f8" : "none",
                     border: tool === "eraser" ? "1px solid #80b0d8" : "1px solid transparent",
-                }}>🧹 Eraser</button>
+                }}>Eraser</button>
                 <span style={{ fontSize: 10, color: "#666" }}>Size:</span>
                 <input type="range" min="1" max="20" value={brushSize}
                     onChange={(e) => setBrushSize(Number(e.target.value))}
                     style={{ width: 60, height: 14 }} />
                 <span style={{ fontSize: 10, color: "#888", width: 16 }}>{brushSize}</span>
                 <div style={{ width: 1, height: 20, background: "#ccc" }} />
-                <button onClick={clearCanvas} style={tbtn}>🗑️ Clear</button>
-                <button onClick={saveCanvas} style={tbtn}>💾 Save</button>
+                <button onClick={clearCanvas} style={tbtn}>Clear</button>
+                <button onClick={saveCanvas} style={tbtn}>Save</button>
             </div>
 
             {/* Canvas area */}
@@ -131,6 +131,6 @@ export default function PaintWindow() {
 
 const tbtn = {
     background: "none", border: "1px solid transparent", padding: "2px 6px",
-    cursor: "pointer", fontSize: 10, fontFamily: "'Silkscreen', monospace",
+    cursor: "pointer", fontSize: 11, fontFamily: "var(--ui-font)",
     borderRadius: 2, display: "flex", alignItems: "center", gap: 3,
 };

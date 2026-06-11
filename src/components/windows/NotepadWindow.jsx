@@ -44,8 +44,8 @@ export default function NotepadWindow() {
                     outline: "none",
                     resize: "none",
                     padding: 8,
-                    fontSize: 12,
-                    fontFamily: "'Silkscreen', monospace",
+                    fontSize: 13,
+                    fontFamily: "Consolas, 'Lucida Console', monospace",
                     lineHeight: 1.6,
                     background: "#fff",
                     color: "#1a1a1a",
@@ -67,6 +67,6 @@ export default function NotepadWindow() {
 
 const menuBtn = {
     background: "none", border: "none", cursor: "pointer",
-    padding: "2px 8px", fontSize: 11, fontFamily: "'Silkscreen', monospace",
+    padding: "3px 9px", fontSize: 11.5, fontFamily: "var(--ui-font)",
     borderRadius: 2, color: "#333",
 };

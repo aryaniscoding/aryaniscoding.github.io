@@ -1,17 +1,15 @@
 import { useState, useEffect } from "react";
+import { AppIcon, WindowsFlag, TrayNetwork, TraySpeaker, TrayBattery } from "./Icons";
 
 export default function Taskbar({
     windows,
-    activeWindow,
+    activeId,
+    quickLaunch,
+    onQuickLaunch,
     onWindowClick,
     onStartClick,
     startOpen,
-    darkMode,
-    searchQuery,
-    onSearchChange,
-    searchResults,
-    onSearchResultClick,
-    minimizedWindows,
+    onShowDesktop,
 }) {
     const [time, setTime] = useState(new Date());
 
@@ -20,83 +18,61 @@ export default function Taskbar({
         return () => clearInterval(timer);
     }, []);
 
-    const timeStr = time.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-    });
-
-    const dateStr = time.toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-    });
+    const timeStr = time.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: true });
+    const dateStr = time.toLocaleDateString("en-US", { month: "numeric", day: "numeric", year: "numeric" });
 
     return (
         <div className="taskbar">
-            {/* Start button */}
             <button
-                className={`start-button ${startOpen ? "active" : ""}`}
+                className={`start-orb ${startOpen ? "active" : ""}`}
                 onClick={onStartClick}
                 title="Start"
+                aria-label="Start"
             >
-                ⊞
+                <WindowsFlag size={26} />
             </button>
 
-            {/* Search box */}
-            <div className="taskbar-search">
-                <span className="taskbar-search-icon">🔍</span>
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchQuery}
-                    onChange={(e) => onSearchChange(e.target.value)}
-                />
-            </div>
-
-            {/* Search results dropdown */}
-            {searchQuery && searchResults && searchResults.length > 0 && (
-                <div className="taskbar-search-results">
-                    {searchResults.map((result, i) => (
-                        <div
-                            key={i}
-                            className="taskbar-search-result"
-                            onClick={() => onSearchResultClick(result)}
+            {quickLaunch && quickLaunch.length > 0 && (
+                <div className="taskbar-quicklaunch">
+                    {quickLaunch.map((app) => (
+                        <button
+                            key={app.id}
+                            className="quicklaunch-btn"
+                            onClick={() => onQuickLaunch(app.id)}
+                            title={app.title}
                         >
-                            <span className="taskbar-search-result-icon">{result.icon}</span>
-                            <span>{result.label}</span>
-                        </div>
+                            <AppIcon name={app.icon} size={20} />
+                        </button>
                     ))}
                 </div>
             )}
 
-            {/* Open windows */}
             <div className="taskbar-windows">
                 {windows.map((win) => {
-                    const isMinimized = minimizedWindows && minimizedWindows.has(win.id);
+                    const active = activeId === win.id && !win.minimized;
                     return (
                         <button
                             key={win.id}
-                            className={`taskbar-window-btn ${activeWindow === win.id && !isMinimized ? "active" : ""} ${isMinimized ? "minimized" : ""}`}
+                            className={`taskbar-window-btn ${active ? "active" : ""} ${win.minimized ? "minimized" : ""}`}
                             onClick={() => onWindowClick(win.id)}
                             title={win.title}
                         >
-                            <span style={{ fontSize: 14 }}>{win.icon}</span>
-                            {win.title}
+                            <AppIcon name={win.icon} size={18} />
+                            <span className="tw-label">{win.title}</span>
                         </button>
                     );
                 })}
             </div>
 
-            {/* System tray */}
             <div className="taskbar-tray">
-                <span style={{ cursor: "pointer", fontSize: 13 }} title="WiFi: Connected">📶</span>
-                <span style={{ cursor: "pointer", fontSize: 13 }} title="Battery: 87%">🔋</span>
-                <span style={{ cursor: "pointer", fontSize: 13 }} title="Volume">🔊</span>
-                <div className="taskbar-clock">
-                    <div style={{ fontWeight: 700 }}>{timeStr}</div>
-                    <div style={{ fontSize: 9, opacity: 0.7 }}>{dateStr}</div>
+                <span className="taskbar-tray-icon" title="Network: Connected"><TrayNetwork /></span>
+                <span className="taskbar-tray-icon" title="Volume"><TraySpeaker /></span>
+                <span className="taskbar-tray-icon" title="Battery: 87%"><TrayBattery /></span>
+                <div className="taskbar-clock" title={time.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}>
+                    <div>{timeStr}</div>
+                    <div style={{ fontSize: 9, opacity: 0.8 }}>{dateStr}</div>
                 </div>
+                <div className="show-desktop" title="Show desktop" onClick={onShowDesktop} />
             </div>
         </div>
     );

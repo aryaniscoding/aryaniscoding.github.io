@@ -107,7 +107,7 @@ export default function MinesweeperWindow() {
                 width: COLS * 28 + 4, marginBottom: 6, padding: "4px 8px",
                 background: "#e0e0e0", border: "2px inset #fff",
             }}>
-                <span style={{ fontSize: 14, fontFamily: "'Silkscreen', monospace", color: "#c00" }}>
+                <span style={{ fontSize: 14, fontFamily: "Consolas, monospace", color: "#c00" }}>
                     💣 {MINES - flagCount}
                 </span>
                 <button onClick={reset} style={{
@@ -116,7 +116,7 @@ export default function MinesweeperWindow() {
                 }}>
                     {gameOver ? "😵" : won ? "😎" : "🙂"}
                 </button>
-                <span style={{ fontSize: 11, fontFamily: "'Silkscreen', monospace", color: "#333" }}>
+                <span style={{ fontSize: 11, fontFamily: "Consolas, monospace", color: "#333" }}>
                     {won ? "WIN!" : gameOver ? "BOOM" : ""}
                 </span>
             </div>
@@ -139,7 +139,7 @@ export default function MinesweeperWindow() {
                             width: 28, height: 28,
                             display: "flex", alignItems: "center", justifyContent: "center",
                             fontSize: 13, fontWeight: 700,
-                            fontFamily: "'Silkscreen', monospace",
+                            fontFamily: "Consolas, monospace",
                             cursor: "pointer",
                             userSelect: "none",
                             border: cell.revealed ? "1px solid #999" : "2px outset #fff",
@@ -157,7 +157,7 @@ export default function MinesweeperWindow() {
                 )))}
             </div>
 
-            <div style={{ marginTop: 8, fontSize: 9, color: "#666", fontFamily: "'Silkscreen', monospace" }}>
+            <div style={{ marginTop: 8, fontSize: 9, color: "#666", fontFamily: "Consolas, monospace" }}>
                 Left-click: reveal · Right-click: flag
             </div>
         </div>

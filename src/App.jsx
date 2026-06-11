@@ -26,8 +26,8 @@ export default function App() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          color: "#ccc",
-          fontFamily: "'Silkscreen', monospace",
+          color: "#dde6f0",
+          fontFamily: "var(--ui-font)",
           animation: "fadeIn 0.5s ease-in",
         }}
       >

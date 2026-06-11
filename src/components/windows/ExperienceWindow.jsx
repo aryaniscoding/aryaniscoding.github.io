@@ -1,11 +1,14 @@
 import { experienceData } from "@/lib/data";
+import { AppIcon } from "../Icons";
 
 export default function ExperienceWindow() {
     return (
         <div>
             <div className="win-toolbar">
-                <button className="win-toolbar-btn">💼 Experience</button>
-                <span style={{ color: "#aaa" }}>|</span>
+                <span style={{ display: "flex", alignItems: "center", gap: 6, fontWeight: 600 }}>
+                    <AppIcon name="experience" size={16} /> Experience
+                </span>
+                <span style={{ color: "#aac", margin: "0 4px" }}>|</span>
                 <span style={{ fontSize: 11, color: "#777" }}>
                     {experienceData.length} positions
                 </span>

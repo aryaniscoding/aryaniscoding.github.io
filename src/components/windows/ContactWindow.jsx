@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AppIcon } from "../Icons";
 
 export default function ContactWindow() {
     const [sent, setSent] = useState(false);
@@ -12,9 +13,9 @@ export default function ContactWindow() {
     return (
         <div>
             <div className="win-toolbar">
-                <button className="win-toolbar-btn">✉️ New Message</button>
-                <span style={{ color: "#aaa" }}>|</span>
-                <button className="win-toolbar-btn">📎 Attach</button>
+                <span style={{ display: "flex", alignItems: "center", gap: 6, fontWeight: 600 }}>
+                    <AppIcon name="mail" size={16} /> New Message
+                </span>
             </div>
             <div className="win-content">
                 {sent ? (
@@ -25,7 +26,10 @@ export default function ContactWindow() {
                             color: "#2e7d32",
                         }}
                     >
-                        <span style={{ fontSize: 48 }}>✅</span>
+                        <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true">
+                            <circle cx="26" cy="26" r="24" fill="#2e9e4e" />
+                            <path d="M15 27l8 8 15-16" fill="none" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
                         <h2 style={{ color: "#2e7d32", border: "none" }}>Message Sent!</h2>
                         <p>Thanks for reaching out. I'll get back to you soon!</p>
                     </div>
@@ -86,7 +90,7 @@ export default function ContactWindow() {
 
                         <div style={{ display: "flex", gap: 8 }}>
                             <button type="submit" className="contact-send-btn">
-                                📤 Send
+                                Send
                             </button>
                         </div>
                     </form>
@@ -94,31 +98,18 @@ export default function ContactWindow() {
 
                 {/* Quick links */}
                 <div style={{ marginTop: 24, paddingTop: 16, borderTop: "1px solid #eee" }}>
-                    <h3>📇 Quick Contact</h3>
+                    <h3>Quick Contact</h3>
                     <div className="social-grid" style={{ marginTop: 8 }}>
-                        <a
-                            href="mailto:aryansahu2705@gmail.com"
-                            className="social-link"
-                        >
-                            <span className="social-link-icon">📧</span>
+                        <a href="mailto:aryansahu2705@gmail.com" className="social-link">
+                            <span className="social-link-icon"><AppIcon name="mail" size={16} /></span>
                             aryansahu2705@gmail.com
                         </a>
-                        <a
-                            href="https://www.linkedin.com/in/aryan-sahu-131928277/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="social-link"
-                        >
-                            <span className="social-link-icon">💼</span>
+                        <a href="https://www.linkedin.com/in/aryan-sahu-131928277/" target="_blank" rel="noopener noreferrer" className="social-link">
+                            <span className="social-link-icon"><AppIcon name="linkedin" size={16} /></span>
                             LinkedIn
                         </a>
-                        <a
-                            href="https://github.com/aryaniscoding"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="social-link"
-                        >
-                            <span className="social-link-icon">🐙</span>
+                        <a href="https://github.com/aryaniscoding" target="_blank" rel="noopener noreferrer" className="social-link">
+                            <span className="social-link-icon"><AppIcon name="github" size={16} /></span>
                             GitHub
                         </a>
                     </div>

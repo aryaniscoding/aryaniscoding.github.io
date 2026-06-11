@@ -53,7 +53,7 @@ export default function ClockWidget() {
                     const y = 100 + 65 * Math.sin(angle);
                     return (
                         <text key={`n${i}`} x={x} y={y} textAnchor="middle" dominantBaseline="central"
-                            fill="#6BA4E8" fontSize="12" fontFamily="'Silkscreen', monospace">
+                            fill="#6BA4E8" fontSize="12" fontFamily="Consolas, monospace">
                             {num}
                         </text>
                     );
@@ -86,12 +86,12 @@ export default function ClockWidget() {
                 marginTop: 16,
                 color: "#6BA4E8",
                 fontSize: 24,
-                fontFamily: "'Silkscreen', monospace",
+                fontFamily: "Consolas, monospace",
                 letterSpacing: 2,
             }}>
                 {time.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true })}
             </div>
-            <div style={{ color: "#555", fontSize: 11, marginTop: 4, fontFamily: "'Silkscreen', monospace" }}>
+            <div style={{ color: "#555", fontSize: 11, marginTop: 4, fontFamily: "Consolas, monospace" }}>
                 {time.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}
             </div>
         </div>

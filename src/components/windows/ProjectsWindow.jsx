@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { projectsData } from "@/lib/data";
+import { AppIcon } from "../Icons";
 
 export default function ProjectsWindow() {
     const [selected, setSelected] = useState(null);
@@ -9,38 +10,25 @@ export default function ProjectsWindow() {
         return (
             <div>
                 <div className="win-breadcrumb">
-                    <span
-                        style={{ cursor: "pointer" }}
-                        onClick={() => setSelected(null)}
-                    >
-                        📁 Projects
-                    </span>
-                    <span style={{ color: "#999" }}> › </span>
-                    <span>{project.title}</span>
+                    <span onClick={() => setSelected(null)}>Projects</span>
+                    <span className="crumb-sep">›</span>
+                    <span style={{ color: "#444" }}>{project.title}</span>
                 </div>
                 <div className="win-content">
                     <h2>{project.title}</h2>
                     <p style={{ marginBottom: 16, color: "#444" }}>{project.description}</p>
 
-                    <h3>🔧 Technologies</h3>
+                    <h3>Technologies</h3>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 16, marginTop: 6 }}>
                         {project.technologies.map((tech, i) => (
-                            <span key={i} className="exp-badge exp-badge-tech">
-                                {tech}
-                            </span>
+                            <span key={i} className="exp-badge exp-badge-tech">{tech}</span>
                         ))}
                     </div>
 
                     {project.github && (
                         <div style={{ marginTop: 8 }}>
-                            <a
-                                href={project.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="social-link"
-                                style={{ display: "inline-flex" }}
-                            >
-                                <span className="social-link-icon">🐙</span>
+                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="social-link" style={{ display: "inline-flex" }}>
+                                <span className="social-link-icon"><AppIcon name="github" size={16} /></span>
                                 View on GitHub
                             </a>
                         </div>
@@ -48,14 +36,8 @@ export default function ProjectsWindow() {
 
                     {project.live && (
                         <div style={{ marginTop: 8 }}>
-                            <a
-                                href={project.live}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="social-link"
-                                style={{ display: "inline-flex" }}
-                            >
-                                <span className="social-link-icon">🌐</span>
+                            <a href={project.live} target="_blank" rel="noopener noreferrer" className="social-link" style={{ display: "inline-flex" }}>
+                                <span className="social-link-icon"><AppIcon name="globe" size={16} /></span>
                                 Live Demo
                             </a>
                         </div>
@@ -68,22 +50,17 @@ export default function ProjectsWindow() {
     return (
         <div>
             <div className="win-toolbar">
-                <button className="win-toolbar-btn">📁 Projects</button>
-                <span style={{ color: "#aaa" }}>|</span>
-                <span style={{ fontSize: 11, color: "#777" }}>
-                    {projectsData.length} items
+                <span style={{ display: "flex", alignItems: "center", gap: 6, fontWeight: 600 }}>
+                    <AppIcon name="folder" size={16} /> Projects
                 </span>
+                <span style={{ color: "#aac", margin: "0 4px" }}>|</span>
+                <span style={{ fontSize: 11, color: "#777" }}>{projectsData.length} items</span>
             </div>
             <div className="file-list">
                 {projectsData.map((project, i) => (
-                    <div
-                        key={i}
-                        className="file-item"
-                        onDoubleClick={() => setSelected(i)}
-                        onClick={() => setSelected(i)}
-                    >
+                    <div key={i} className="file-item" onClick={() => setSelected(i)} onDoubleClick={() => setSelected(i)}>
                         <span className="file-item-icon">
-                            {project.featured ? "📂" : "📄"}
+                            <AppIcon name={project.featured ? "folder" : "resume"} size={40} />
                         </span>
                         <span className="file-item-name">{project.title}</span>
                     </div>

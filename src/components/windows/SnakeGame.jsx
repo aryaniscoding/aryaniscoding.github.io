@@ -92,7 +92,7 @@ export default function SnakeGame() {
             <div style={{
                 display: "flex", justifyContent: "space-between", width: GRID * CELL,
                 marginBottom: 6, color: "#6BA4E8", fontSize: 12,
-                fontFamily: "'Silkscreen', monospace",
+                fontFamily: "Consolas, monospace",
             }}>
                 <span>🐍 Score: {score}</span>
                 <span>Best: {Math.max(score, 0)}</span>
@@ -149,16 +149,16 @@ export default function SnakeGame() {
                         display: "flex", flexDirection: "column",
                         alignItems: "center", justifyContent: "center",
                     }}>
-                        <div style={{ color: "#ef4444", fontSize: 16, fontFamily: "'Silkscreen', monospace", marginBottom: 8 }}>
+                        <div style={{ color: "#ef4444", fontSize: 16, fontFamily: "Consolas, monospace", marginBottom: 8 }}>
                             GAME OVER
                         </div>
-                        <div style={{ color: "#6BA4E8", fontSize: 12, fontFamily: "'Silkscreen', monospace", marginBottom: 12 }}>
+                        <div style={{ color: "#6BA4E8", fontSize: 12, fontFamily: "Consolas, monospace", marginBottom: 12 }}>
                             Score: {score}
                         </div>
                         <button onClick={reset} style={{
                             background: "#245ED8", color: "#fff", border: "none",
                             padding: "6px 16px", borderRadius: 3, cursor: "pointer",
-                            fontFamily: "'Silkscreen', monospace", fontSize: 11,
+                            fontFamily: "Consolas, monospace", fontSize: 11,
                         }}>
                             Play Again
                         </button>
@@ -173,17 +173,17 @@ export default function SnakeGame() {
                         display: "flex", flexDirection: "column",
                         alignItems: "center", justifyContent: "center",
                     }}>
-                        <div style={{ color: "#4ade80", fontSize: 14, fontFamily: "'Silkscreen', monospace", marginBottom: 8 }}>
+                        <div style={{ color: "#4ade80", fontSize: 14, fontFamily: "Consolas, monospace", marginBottom: 8 }}>
                             🐍 SNAKE
                         </div>
                         <button onClick={reset} style={{
                             background: "#22c55e", color: "#fff", border: "none",
                             padding: "6px 16px", borderRadius: 3, cursor: "pointer",
-                            fontFamily: "'Silkscreen', monospace", fontSize: 11,
+                            fontFamily: "Consolas, monospace", fontSize: 11,
                         }}>
                             Start Game
                         </button>
-                        <div style={{ color: "#666", fontSize: 9, marginTop: 8, fontFamily: "'Silkscreen', monospace" }}>
+                        <div style={{ color: "#666", fontSize: 9, marginTop: 8, fontFamily: "Consolas, monospace" }}>
                             Arrow keys to move
                         </div>
                     </div>
